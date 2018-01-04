@@ -12,15 +12,20 @@ import com.example.kerwinzhou.myapplication.models.*;
 import com.example.kerwinzhou.myapplication.Utils.*;
 import java.util.ArrayList;
 import java.util.List;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
+    @BindView(R.id.fab) FloatingActionButton floatingActionButton;
+    @BindView(R.id.main_recycler_view) RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
 
-        FloatingActionButton floatingActionButton = (FloatingActionButton) findViewById(R.id.fab);
+        //FloatingActionButton floatingActionButton = (FloatingActionButton) findViewById(R.id.fab);
 
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void setupUI(List<Todo> list) {
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.main_recycler_view);
+        //RecyclerView recyclerView = (RecyclerView) findViewById(R.id.main_recycler_view);
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
         recyclerView.setAdapter(new TodoListAdapter(list));
     }
